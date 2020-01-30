@@ -97,7 +97,7 @@ if [ "${docker_gpu}" == "-1" ]; then
   container_name="espnet_cpu_${this_time}"
 else
   # --rm erase the container when the training is finished.
-  cmd0="NV_GPU='${docker_gpu}' nvidia-docker"
+  cmd0="NV_GPU='${docker_gpu}' docker"
   container_name="espnet_gpu${docker_gpu//,/_}_${this_time}"
 fi
 
@@ -142,7 +142,7 @@ if [ ! -z "${http_proxy}" ]; then
   this_env="${this_env} -e 'http_proxy=${http_proxy}'"
 fi
 
-cmd="${cmd0} run -i --rm ${this_env} --name ${container_name} ${vols} espnet/espnet:${container_tag} /bin/bash -c '${cmd}'"
+cmd="${cmd0} run --gpus all -i --rm ${this_env} --name ${container_name} ${vols} espnet/espnet:${container_tag} /bin/bash -c '${cmd}'"
 
 trap ctrl_c INT
 
