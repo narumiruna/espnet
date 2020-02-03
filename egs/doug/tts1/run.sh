@@ -9,10 +9,10 @@
 
 # general configuration
 backend=pytorch
-stage=-1
+stage=0
 stop_stage=100
 ngpu=1       # number of gpus ("0" uses cpu, otherwise use gpu)
-nj=32        # numebr of parallel jobs
+nj=16        # numebr of parallel jobs
 dumpdir=dump # directory to dump full features
 verbose=1    # verbose option (if set > 0, get more log)
 N=1          # number of minibatches to be used (mainly for debugging). "0" uses all minibatches.
@@ -20,7 +20,7 @@ seed=1       # random seed number
 resume=""    # the snapshot path to resume (if set empty, no effect)
 
 # feature extraction related
-fs=48000      # sampling frequency
+fs=22050      # sampling frequency
 fmax=7600     # maximum frequency
 fmin=80       # minimum frequency
 n_mels=80     # number of mel basis
@@ -33,9 +33,9 @@ win_length="" # window length
 trans_type="char"
 
 # config files
-train_config=conf/train_pytorch_tacotron2.yaml # you can select from conf or conf/tuning.
-                                               # now we support tacotron2, transformer, and fastspeech
-                                               # see more info in the header of each config.
+train_config=conf/train_pytorch_transformer.yaml # you can select from conf or conf/tuning.
+                                                 # now we support tacotron2, transformer, and fastspeech
+                                                 # see more info in the header of each config.
 decode_config=conf/decode.yaml
 
 # knowledge distillation related
