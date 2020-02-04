@@ -15,7 +15,7 @@ ngpu=1       # number of gpus ("0" uses cpu, otherwise use gpu)
 nj=16        # numebr of parallel jobs
 dumpdir=dump # directory to dump full features
 verbose=1    # verbose option (if set > 0, get more log)
-N=1          # number of minibatches to be used (mainly for debugging). "0" uses all minibatches.
+N=0          # number of minibatches to be used (mainly for debugging). "0" uses all minibatches.
 seed=1       # random seed number
 resume=""    # the snapshot path to resume (if set empty, no effect)
 

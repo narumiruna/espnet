@@ -5,13 +5,13 @@
 # network architecture related
 model-module: espnet.nets.pytorch_backend.e2e_tts_transformer:Transformer
 embed-dim: 0
-eprenet-conv-layers: 0 # one more linear layer w/o non-linear will be added for 0-centor
+eprenet-conv-layers: 0  # one more linear layer w/o non-linear will be added for 0-centor
 eprenet-conv-filts: 0
 eprenet-conv-chans: 0
-dprenet-layers: 2 # one more linear layer w/o non-linear will be added for 0-centor
+dprenet-layers: 2  # one more linear layer w/o non-linear will be added for 0-centor
 dprenet-units: 256
 adim: 384
-aheads: 2
+aheads: 4
 elayers: 6
 eunits: 1536
 dlayers: 6
@@ -32,9 +32,9 @@ reduction-factor: 1
 # minibatch related
 batch-sort-key: input # shuffle or input or output
 # batch-bins: 2277000   # 30 * (870 * 80 + 180 * 35)
-#                       # batch-size * (max_out * dim_out + max_in * dim_in)
-#                       # resuling in 38 ~ 127 samples (avg 38 samples) in batch (330 batches per epochs) for ljspeech
-batch-bins: 1138500
+                      # batch-size * (max_out * dim_out + max_in * dim_in)
+                      # resuling in 38 ~ 127 samples (avg 38 samples) in batch (330 batches per epochs) for ljspeech
+batch-bins: 379500
 
 # training related
 transformer-init: pytorch
@@ -59,11 +59,11 @@ modules-applied-guided-attn: ["encoder-decoder"]
 
 # optimization related
 opt: noam
-accum-grad: 4
+accum-grad: 12
 grad-clip: 1.0
 weight-decay: 0.0
 patience: 0
-epochs: 1000 # 1,000 epochs * 330 batches / 2 accum-grad = 165,000 iters
+epochs: 1000  # 1,000 epochs * 330 batches / 2 accum-grad = 165,000 iters
 
 # other
 save-interval-epoch: 10
